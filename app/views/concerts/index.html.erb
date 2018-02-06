@@ -1,0 +1,7 @@
+<h3>Upcoming Concerts</h3>
+
+<% @concerts.each do |concert| %>
+	<div id="concert-display">
+		<%= link_to "#{concert.band}", concert_path(concert) %> - <%= concert.venue %> on <%= concert.date %> at <%= concert.start_time %>
+	</div>
+<% end %>

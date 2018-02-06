@@ -1,0 +1,22 @@
+<div id="concert-info">
+	<h3><%= @concert.band %></h3>
+
+	Venue: <%= @concert.venue %><br>
+	Date: <%= @concert.date %><br>
+	Start time: <%= @concert.start_time %><br>
+	<h3>Attendees:</h3>
+	<% @attendees.each do |attendee| %>
+		<% if attendee.id == session[:user_id] %>
+			<strong><%= attendee.first_name %> <%= attendee.last_name %></strong><br>
+		<% else %>
+			<%= attendee.first_name %> <%= attendee.last_name %><br>
+		<% end %>
+	<% end %>
+</div>
+
+<br>
+<% if session[:user_id] %>
+	<div id="attend-button">
+		<%= button_to "Attend", attendances_path(info: {concert_id: @concert.id}) %>
+	</div>
+<% end %>

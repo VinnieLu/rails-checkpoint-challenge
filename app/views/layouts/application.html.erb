@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Phase3Assessment</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+	<div id="top-navbar">
+		<div id="top-navbar-left">
+			<h1>Concerts!</h1>
+		</div>
+		<div id="top-navbar-right">
+			<h2>
+        <% if !session[:user_id] %>
+          <%= link_to "Login", login_path %> | <%= link_to "Sign up", new_user_path %>
+        <% else %>
+          <%= link_to "Logout", logout_path %>
+        <% end %>
+         | <%= link_to "Home", concerts_path %></h2>
+		</div>
+	</div>
+
+    <%= yield %>
+  </body>
+</html>
